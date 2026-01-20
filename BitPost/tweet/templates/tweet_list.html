@@ -5,7 +5,14 @@ BitPost
 {% endblock %}
 
 {%block content%}
-<h1 class='text-center mt-4'>Welcome to BitPost!!</h1>
+{% if search_query %}
+    <h2 class='text-center mt-4'>Search results for: "{{ search_query }}"</h2>
+    {% if not tweets %}
+        <p class="text-center text-muted">No tweets found matching your search.</p>
+    {% endif %}
+{% else %}
+    <h2 class='text-center mt-4'>Welcome to BitPost!!</h2>
+{% endif %}
 
 <a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create a Tweet</a>
 <div class="container row gap-3">

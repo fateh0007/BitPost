@@ -61,7 +61,7 @@ def register(request):
     return render(request, "registration/register.html", {'form': form})
 
 def search_tweets(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q','')
     if query:
         tweets = Tweet.objects.filter(
             Q(text__icontains=query) | 
